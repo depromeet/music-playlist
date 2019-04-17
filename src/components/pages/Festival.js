@@ -4,7 +4,7 @@ class Festival extends Component {
     render() {
         return (
             <div>
-                페스티벌 페이지
+                <h1 class="test">페스티벌 페이지</h1>
             </div>
         );
     }
