@@ -4,10 +4,10 @@ import '../../resources/sass/FestivalTitle.scss';
 class FestivalTitle extends Component {
     render() {
         return (
-            <div id="title">
+            <h1 id="title">
                 SEOUL JAZZ FESTIVAL
                 {/* <div class="text">SEOUL JAZZ FESTIVAL</div> */}
-            </div>
+            </h1>
         );
     }
 }

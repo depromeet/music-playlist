@@ -1,7 +1,4 @@
-@font-face {
-    font-family: BlackHanSans;
-    src: url('../fonts/BlackHanSans-Regular.ttf');
-}
+@import '../sass/Util.scss';
 
 $fontSize: 100px;
 
@@ -13,14 +10,15 @@ body {
   perspective: 500px;
 }
 
-div {
-  will-change: transform;
-}
+// div {
+//   will-change: transform;
+// }
 
 #title {
   width: 820px;
   height: 258px;
   opacity: 0.7;
+  margin: 0;
   -webkit-text-stroke: 1px #ffffff;
   font-family: BlackHanSans;
   font-size: 130px;
@@ -30,7 +28,7 @@ div {
   line-height: 1.2;
   letter-spacing: normal;
   text-align: left;
-  color: black;
+  color: rgba(255, 255, 255, 0);
 }
 
 #ui {
