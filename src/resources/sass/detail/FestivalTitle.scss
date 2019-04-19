@@ -1,4 +1,7 @@
-@import '../sass/Util.scss';
+@font-face {
+  font-family: BlackHanSans;
+  src: url('../../font/BlackHanSans-Regular.ttf');
+}
 
 $fontSize: 100px;
 
@@ -17,6 +20,7 @@ body {
 #title {
   width: 820px;
   height: 258px;
+  display: inline-block;
   opacity: 0.7;
   margin: 0;
   -webkit-text-stroke: 1px #ffffff;

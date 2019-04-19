@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import '../../resources/sass/FestivalTitle.scss';
+import '../../resources/sass/detail/FestivalTitle.scss';
 
 class FestivalTitle extends Component {
     render() {
+        const {title} = this.props;
         return (
             <h1 id="title">
-                SEOUL JAZZ FESTIVAL
+                {title}
                 {/* <div class="text">SEOUL JAZZ FESTIVAL</div> */}
             </h1>
         );
