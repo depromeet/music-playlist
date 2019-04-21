@@ -7,7 +7,6 @@ class FestivalTitle extends Component {
         return (
             <h1 id="title">
                 {title}
-                {/* <div class="text">SEOUL JAZZ FESTIVAL</div> */}
             </h1>
         );
     }
