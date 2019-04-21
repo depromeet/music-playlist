@@ -17,7 +17,13 @@ class Festival extends Component {
                 'Consumerism']  
             }],
             '05/20' : [{
-                'Ms. Lauryn Hill': ['Lose Myself', 'Neurotic Society', 'Black Is the Color of My True Love’s Hair', 
+                'Ms. Lauryn Hill2': ['Lose Myself', 'Neurotic Society', 'Black Is the Color of My True Love’s Hair', 
+                'Consumerism'],
+                'Ms. Lauryn Hill3': ['Lose Myself', 'Neurotic Society', 'Black Is the Color of My True Love’s Hair', 
+                'Consumerism'],
+                'Ms. Lauryn Hill4': ['Lose Myself', 'Neurotic Society', 'Black Is the Color of My True Love’s Hair', 
+                'Consumerism'],
+                'Ms. Lauryn Hill5': ['Lose Myself', 'Neurotic Society', 'Black Is the Color of My True Love’s Hair', 
                 'Consumerism'] 
             }]
         }

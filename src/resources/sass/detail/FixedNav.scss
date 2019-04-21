@@ -21,6 +21,8 @@ nav {
         border-bottom: 10px solid rgba(255, 255, 255, 0.2);
         &.selected {
             color: #ffffff;
+            animation: content 1s ease-in;
+            animation-iteration-count: 1;
             border-bottom: 10px solid #ffffff;
         }
     }
@@ -28,11 +30,16 @@ nav {
         margin-top: 56px;
     }
     .singer-ul {
+        display: none;
         padding-left: 0;
         margin-top: 56px; 
         color: #999999;
         list-style: none;
-        transition: all 0.3s ease-in-out;
+        opacity: 1;
+        animation-name: fadeInOpacity;
+        animation-iteration-count: 1;
+        animation-timing-function: ease-in;
+        animation-duration: 1s;
  
         li {
             font-size: 22px;
@@ -47,12 +54,24 @@ nav {
 }
 
 @keyframes content {
-    from {
-      opacity: 0;
-      transform: translateY(5%);
+    0% {
+        border-bottom: 10px solid rgba(255, 255, 255, 0.2);
+        border-width: 50%
     }
-    to {
-      opacity: 1;
-      transform: translateY(0%);
+    50%{
+        border-bottom: 10px solid rgba(255, 255, 255, 0.5);
+    }
+    100% {
+        border-bottom: 10px solid #ffffff;
+        border-width: 100%
     }
   }
+
+  @keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}

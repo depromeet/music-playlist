@@ -13,6 +13,10 @@ class SingerList extends Component {
         this.props.handleChangeForSinger(target.innerText);
         document.getElementById(`div_${index}`).scrollIntoView({ block: 'end',  behavior: 'smooth' });
     }
+    componentDidUpdate() {
+        console.log('sss')
+        document.querySelector('.singer-ul').style.display = 'block';
+    }
     render() {
         const {singerList, selectedSinger} = this.props;
         if(!selectedSinger) {

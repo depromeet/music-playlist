@@ -14,7 +14,7 @@ class FestivalBody extends Component {
     render() {
         const stlyeBody = {
             display: 'flex',
-            marginTop: '174px',
+            marginTop: '200px',
             color: 'white',
         }
         const {data} = this.props;

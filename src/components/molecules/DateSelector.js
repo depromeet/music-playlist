@@ -9,6 +9,7 @@ class DateSelector extends Component {
         
         }
         target.classList.add('selected');
+        document.querySelector('.singer-ul').style.display = 'none';
         this.props.handleChange(target.innerText);
     }
     render() {
