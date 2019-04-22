@@ -1,29 +1,23 @@
-.year-selector {
-    display: inline-block;
-    position: relative;
-    height: 300px;
-    width: 270px;
-    // margin-left: 598px;
+@import '../utill/ScrollableSelector.scss';
 
-    ul {
-        color: rgba(255, 255, 255, 0.5);
-        list-style: none;
-        // height: 300px;
-    }
-    li {
-        width: 188px;
-        position: absolute;
-        backface-visibility: hidden;
-        top: 110px;
-        font-size: 56px;
-        text-align: center;
-        transition: transform 1s, font-size 1s, color 1s;
-        &.selected {
-            font-size: 80px;
-            color: #fff;
-        }
-    }
+.scrollable-selector {
+   @extend %scrollable-selector;
+   height: 300px;
+   width: 270px;
+   margin-left: 598px;
+   cursor: pointer;
+
+   li {
+     width: 188px;
+     top: 110px;
+     font-size: 56px;
+
+     &.selected {
+        font-size: 80px;
+     }
+   }
 }
+
 @keyframes fadeInOpacity {
 	0% {
 		opacity: 0;
