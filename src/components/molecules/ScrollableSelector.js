@@ -5,46 +5,48 @@ class ScrollableSelector extends Component {
     constructor(props) {
         super(props);
         /* 
-            amount: 원통 각도
-            !!list 길이 웬만하면 원통각도의 약수로
+        amount: 원통 각도
+        !!list 길이 웬만하면 원통각도의 약수로
         */
-        const {amount = 360, list} = props; 
+       const {amount = 360, list} = props; 
         this.state = {
             angle: amount / list.length,
             list : list,
             selectedIndex: 0,
         }
     }
-
+    
     preventDefault(e) {
         e = e || window.event;
         if (e.preventDefault)
-            e.preventDefault();
+        e.preventDefault();
         e.returnValue = false;
     }
-
+    
     preventDefaultForScrollKeys(e) {
         if (keys[e.keyCode]) {
             this.preventDefault(e);
             return false;
         }
     }
-
+    
     disableScroll() {
-        if (document.querySelector('.festival-component').addEventListener) // older FF
-            document.querySelector('.festival-component').addEventListener('DOMMouseScroll', this.preventDefault, false);
-        document.querySelector('.festival-component').onwheel = this.preventDefault; // modern standard
-        document.querySelector('.festival-component').onmousewheel = document.onmousewheel = this.preventDefault; // older browsers, IE
-        document.querySelector('.festival-component').ontouchmove = this.preventDefault; // mobile
+        const newLocal = document.querySelector('.festival-component') ? document.querySelector('.festival-component') : window;
+        if (newLocal.addEventListener) // older FF
+        newLocal.addEventListener('DOMMouseScroll', this.preventDefault, false);
+        newLocal.onwheel = this.preventDefault; // modern standard
+        newLocal.onmousewheel = document.onmousewheel = this.preventDefault; // older browsers, IE
+        newLocal.ontouchmove = this.preventDefault; // mobile
         document.onkeydown = this.preventDefaultForScrollKeys;
     }
-
+    
     enableScroll() {
-        if (document.querySelector('.festival-component').removeEventListener)
-        document.querySelector('.festival-component').removeEventListener('DOMMouseScroll', this.preventDefault, false);
-        document.querySelector('.festival-component').onmousewheel = document.onmousewheel = null;
-        document.querySelector('.festival-component').onwheel = null;
-        document.querySelector('.festival-component').ontouchmove = null;
+        const newLocal = document.querySelector('.festival-component') ? document.querySelector('.festival-component') : window;
+        if (newLocal.removeEventListener)
+        newLocal.removeEventListener('DOMMouseScroll', this.preventDefault, false);
+        newLocal.onmousewheel = document.onmousewheel = null;
+        newLocal.onwheel = null;
+        newLocal.ontouchmove = null;
         document.onkeydown = null;
     }
     setSelectedIndex = (index) => {
@@ -53,7 +55,7 @@ class ScrollableSelector extends Component {
         })
     }
 
-    handleScroll = (e) => {
+    handleScroll = (e, selectYpixel) => {
         const upDown = e.deltaY > 0 ? -1 : 1;
         const lis = document.querySelector(".scrollable-selector").querySelectorAll("li");
         lis.forEach((element, index) => {
@@ -65,19 +67,19 @@ class ScrollableSelector extends Component {
             if (Math.floor(deg % 300) === 0) {
                 this.setSelectedIndex(index);
                 element.classList.add('selected');
-                y = -18;
+                y = selectYpixel;
             }
 
             element.style.webkitTransform = `rotateX(${deg}deg) translateZ(140px) translateY(${y}px)`;
         });
 
     }
-    render() {
+    render(y, z) {
         let deg = 0;
         const { angle, selectedIndex } = this.state;
         const lis = this.state.list.map((value, index) => {
             const style = {
-                webkitTransform: `rotateX(-${deg}deg) translateZ(140px)`
+                webkitTransform: `rotateX(-${deg}deg) translateZ(${z}px)`
             }
             let className;
             if (index === selectedIndex) {
@@ -94,7 +96,7 @@ class ScrollableSelector extends Component {
             <div className="scrollable-selector"
                 onMouseOver={() => {this.disableScroll()}}
                 onMouseLeave={() => {this.enableScroll()}}
-                onWheel={this.handleScroll}>
+                onWheel={(e) => {this.handleScroll(e, y)}}>
                 <ul>
                     {lis}
                 </ul>
