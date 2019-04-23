@@ -87,7 +87,7 @@ class ScrollableSelector extends Component {
             }
             deg += angle;
             return (<li style={style}
-                className={className}>
+                className={className} key={index}>
                 {value}
             </li>)
         })
