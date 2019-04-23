@@ -5,8 +5,11 @@ import YearSelector from '../molecules/YearSelector';
 class FestivalHeader extends Component {
     render() {
         const {title} = this.props;
+        const style = {
+            position: 'relative'
+        }
         return (
-            <div>
+            <div style={style}>
                 <FestivalTitle title={title}/>
                 <YearSelector/>
             </div>

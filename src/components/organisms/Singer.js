@@ -19,9 +19,11 @@ class Singer extends Component {
                         <img src={url}></img>
                     </Fade>
                     <Fade bottom>
-                        <ol>
-                            {ols}
-                        </ol>
+                        <div className="singers-div">
+                            <ol>
+                                {ols}
+                            </ol>
+                        </div>
                     </Fade>
                 </div>
                 <p>{name}</p>

@@ -14,7 +14,6 @@ class SingerList extends Component {
         document.getElementById(`div_${index}`).scrollIntoView({ block: 'end',  behavior: 'smooth' });
     }
     componentDidUpdate() {
-        console.log('sss')
         document.querySelector('.singer-ul').style.display = 'block';
     }
     render() {

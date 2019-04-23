@@ -5,7 +5,7 @@ class SingerInfos extends Component {
     render() {
         const style ={
             width: '100%',
-            paddingLeft: '205px',
+            marginLeft: '190px',
         }
         const {singerInfos} =this.props;
         const singerDatas = [];

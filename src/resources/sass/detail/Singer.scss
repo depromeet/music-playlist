@@ -1,8 +1,8 @@
 %positionRelative {
     display: inline-block;
-    position: relative;
+    position: absolute;
     width: 440px;
-        
+    margin: 0;
 }
 
 .singer-component {
@@ -16,29 +16,33 @@
     }
     .info {
         height: 440px;
+        position: relative;
+        padding-top: 45px;
     }
     h3 {
         @extend %positionRelative;
-        margin: 0;
         margin-bottom: 16px;
         font-size: 30px;
     }
     p {
         @extend %positionRelative;
         font-size: 36px;
+        margin-top: 21px;
     }
-    ol {
-        position: relative;
-        top: 100px;
+    .singers-div {
+        position: absolute;
+        top: 115px;
         height: 300px;
         width: 600px;
         background: white;
-        display: table-cell;
-        vertical-align: middle;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+    }
+    ol {
         color: black;
         text-align: left;
         list-style: none;
-        box-sizing: border-box;
         counter-reset: my-awesome-counter;
         li {
             line-height: 1.6;
@@ -51,7 +55,7 @@
         }
     }
     &.left {
-        ol {
+        .singers-div {
             left: 380px;
         }
     }
@@ -59,11 +63,11 @@
         img {
             right: 0;
         }
-        ol {
-            left: 310px;
+        .singers-div {
+            right: 23.5rem;
         }
         p, h3 {
-            left: 851px;
+            right: 0;
         }
     }
 }

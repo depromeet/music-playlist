@@ -2,19 +2,31 @@
 
 .scrollable-selector {
    @extend %scrollable-selector;
+   position: absolute;
    height: 300px;
    width: 270px;
-   margin-left: 598px;
+   right: 0;
+   // margin-left: 598px;
    cursor: pointer;
-
+   ul {
+      color: rgba(255, 255, 255, 0.15);
+      list-style: none;
+  }
    li {
      width: 188px;
      top: 110px;
-     font-size: 56px;
+     font-size: 32px;
 
      &.selected {
         font-size: 80px;
      }
+     
+     &.selected + li,
+     &.select-before {
+      font-size: 56px;
+      color: rgba(255, 255, 255, 0.5);
+     }
+
    }
 }
 
