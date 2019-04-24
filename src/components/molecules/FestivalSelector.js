@@ -20,13 +20,17 @@ class FestivalSelector extends Component{
     makeList(){
         const { festivals } = this.props;
         const { upDown } = this.state;
-        let defaultdeg = 36;
+        let defaultdeg = 0;
+        let festivalLength = festivals.length;
+        console.log(festivalLength);
         return festivals.map( function(festival, i) {
             defaultdeg = defaultdeg - 36;
             return <FestivalName
             upDown={upDown}
             defaultdeg={defaultdeg}
             festival={festival.name}
+            festivalLength = {festivalLength}
+            index={i}
             key={i}
              />
         })

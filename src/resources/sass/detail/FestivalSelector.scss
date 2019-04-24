@@ -3,13 +3,8 @@
 .scrollable-selector {
     @extend %scrollable-selector;
     height: 500px;
-    a:link{
-        text-decoration: none;
-        color : rgba(255, 255, 255, 0.5);
-        &.selected {
-            color: #fff;
-        }
-    }
+    color: rgba(255, 255, 255, 0.5);
+ 
     a:visited{
         text-decoration: none;
         color : rgba(255, 255, 255, 0.5);
@@ -20,9 +15,12 @@
         margin-top: 10px;
         font-size: 75px;
         text-align: center;
+    }
+    a:link{
+        text-decoration: none;
+        color : rgba(255, 255, 255, 0.5);
         &.selected {
             color: #fff;
-            padding-top: 10px;
         }
     }
 }
