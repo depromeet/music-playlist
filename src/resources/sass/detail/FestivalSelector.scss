@@ -2,20 +2,27 @@
 
 .scrollable-selector {
     @extend %scrollable-selector;
-    height: 500px;
-    color: rgba(255, 255, 255, 0.5);
- 
-    a:visited{
-        text-decoration: none;
-        color : rgba(255, 255, 255, 0.5);
-    }
-
+    height: 400px;
+    width: 632px;
+    margin : auto;
+    // ul{
+    //     position: relative;
+    //     margin: 0;
+    //     padding: 0;
+    //     width : 632px;
+    //     height: 300px;
+    // }
     li {
         width: 632px;
         margin-top: 10px;
         font-size: 75px;
         text-align: center;
     }
+    a:visited{
+        text-decoration: none;
+        color : rgba(255, 255, 255, 0.5);
+    }
+
     a:link{
         text-decoration: none;
         color : rgba(255, 255, 255, 0.5);

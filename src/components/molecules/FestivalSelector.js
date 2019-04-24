@@ -53,9 +53,11 @@ class FestivalSelector extends Component{
     // throttledWheel을 위에서 throttle(this.throggledWHeel, 300);
     render(){
         return(
-            <ul onWheel={this.handleWheel} className="scrollable-selector">
+            <div  onWheel={this.handleWheel}>
+            <ul className="scrollable-selector">
                 {this.makeList()} 
             </ul>
+            </div>
         )
     }
 }
