@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import FestivalName from '../molecules/FestivalName';
 import FestivalSelector from '../molecules/FestivalSelector';
 import '../../resources/sass/Main.scss';
 import { white } from 'ansi-colors';
+import Background from '../../resources/image/main3.png';
 
 class Main extends Component {
     constructor(props){
@@ -12,16 +12,15 @@ class Main extends Component {
             festivals : []
         }
     }
-
-    list(){
-        const { festivals } = this.state;
-        const style = {
-            color : white
-        }
-       return festivals.map(function(festival, i){
-         return <li style={style} key={i}> {festival} </li>
-       })
-    }
+    // list(){
+    //     const { festivals } = this.state;
+    //     const style = {
+    //         color : white
+    //     }
+    //    return festivals.map(function(festival, i){
+    //      return <li style={style} key={i}> {festival} </li>
+    //    })
+    // }
 
     componentDidMount(){
         axios.get('http://localhost:3231/festival')
@@ -35,12 +34,13 @@ class Main extends Component {
     }
 
     render() {
+        let style ={
+            backgroundImage: `url(${Background})`
+        }
         return (
-            <div className="main-container">
-                {/* <ul className="main-festival">
-                    {this.list()}
-                </ul> */}
-                {/* {this.list()} */}
+            <div
+            style={style}
+            className="main-container">
                 <FestivalSelector festivals={this.state.festivals}/>
             </div>
         );

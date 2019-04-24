@@ -2,6 +2,7 @@
 
 .scrollable-selector {
     @extend %scrollable-selector;
+    list-style-type: none;
     height: 400px;
     width: 665px;
     margin : auto;

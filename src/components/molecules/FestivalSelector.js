@@ -11,7 +11,7 @@ class FestivalSelector extends Component{
         }
         this.makeList = this.makeList.bind(this);
         this.handleWheel = this.handleWheel.bind(this);
-        this.handleWheelThrottled = throttle(this.handleWheelThrottled.bind(this), 250);
+        this.handleWheelThrottled = throttle(this.handleWheelThrottled.bind(this), 300);
     }
     componentWillUnmount() {
         this.handleWheelThrottled.cancel();
