@@ -1,17 +1,58 @@
 import React, { Component } from 'react';
-import ScrollableSelector from './ScrollableSelector';
+import throttle from 'lodash.throttle';
+import FestivalName from './FestivalName';
 import '../../resources/sass/detail/FestivalSelector.scss';
 
-class FestivalSelector extends ScrollableSelector{
-    constructor(){
-        super({
-            amount : 300,
-            list : [2019,
-            2018,2017,2016,2015,2014,2013,2012,2011,2010]
+class FestivalSelector extends Component{
+    constructor(props){
+        super(props);
+        this.state={
+            upDown : 1
+        }
+        this.makeList = this.makeList.bind(this);
+        this.handleWheel = this.handleWheel.bind(this);
+        this.handleWheelThrottled = throttle(this.handleWheelThrottled.bind(this), 250);
+    }
+    componentWillUnmount() {
+        this.handleWheelThrottled.cancel();
+    }
+
+    makeList(){
+        const { festivals } = this.props;
+        const { upDown } = this.state;
+        let defaultdeg = 36;
+        return festivals.map( function(festival, i) {
+            defaultdeg = defaultdeg - 36;
+            return <FestivalName
+            upDown={upDown}
+            defaultdeg={defaultdeg}
+            festival={festival.name}
+            key={i}
+             />
         })
     }
+ 
+    handleWheelThrottled(e){
+        const upDown = e.deltaY > 0 ? -1 : 1;
+        this.setState({
+            upDown : upDown
+        })
+    }
+
+    handleWheel(e){
+        e.persist();
+        this.handleWheelThrottled(e);
+    }
+    // ul에 붙일 핸들러 this.onWheel
+    // onWheel에 e.persist() 붙이고, this.throttleeWheel(e) 부름 
+    // throttledWheel 안에 e.deltaY 가 있다.
+    // throttledWheel을 위에서 throttle(this.throggledWHeel, 300);
     render(){
-        return super.render(-18, 140);
+        return(
+            <ul onWheel={this.handleWheel} className="scrollable-selector">
+                {this.makeList()} 
+            </ul>
+        )
     }
 }
 

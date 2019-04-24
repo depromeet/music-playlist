@@ -1,10 +1,8 @@
 %scrollable-selector {
-    display: inline-block;
     position: relative;
-
     ul {
         color: rgba(255, 255, 255, 0.5);
-        list-style: none;
+        list-style-type: none;
     }
     li {
         position: absolute;

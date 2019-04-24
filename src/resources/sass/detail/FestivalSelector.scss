@@ -1,21 +1,28 @@
-.scrollable-selector {
-    display: inline-block;
-    position: relative;
-    background-color: aqua;
+@import '../utill/ScrollableSelector.scss';
 
-    ul {
-        color: rgba(255, 255, 255, 0.5);
-        list-style: none;
-    }
-    li {
-        position: absolute;
-        backface-visibility: hidden;
-        top: 110px;
-        font-size: 56px;
-        text-align: center;
-        transition: transform 1s, font-size 1s, color 1s;
+.scrollable-selector {
+    @extend %scrollable-selector;
+    height: 500px;
+    a:link{
+        text-decoration: none;
+        color : rgba(255, 255, 255, 0.5);
         &.selected {
             color: #fff;
+        }
+    }
+    a:visited{
+        text-decoration: none;
+        color : rgba(255, 255, 255, 0.5);
+    }
+
+    li {
+        width: 632px;
+        margin-top: 10px;
+        font-size: 75px;
+        text-align: center;
+        &.selected {
+            color: #fff;
+            padding-top: 10px;
         }
     }
 }
