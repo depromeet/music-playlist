@@ -4,7 +4,7 @@ import SingerInfos from './SingerInfos';
 
 class FestivalBody extends Component {
     state = {
-        selectedDate: Object.keys(this.props.data)[0],
+        selectedDate:this.props.data.festival_days[0].perform_date,    
     }
     handleChange = (date) => {
         this.setState({
@@ -18,9 +18,10 @@ class FestivalBody extends Component {
             color: 'white',
         }
         const {data} = this.props;
+        console.log(data);
         const {selectedDate} = this.state;
-        const dates = Object.keys(data);
-        const singerInfos = data[selectedDate][0];
+        const dates = data.festival_days.map((day) => ( day.perform_date))
+        const singerInfos = data.festival_days.find((d)=> (d.perform_date === selectedDate)).singers;
 
         return (
             <React.Fragment>
