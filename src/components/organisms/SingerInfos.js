@@ -8,19 +8,16 @@ class SingerInfos extends Component {
             marginLeft: '190px',
         }
         const {singerInfos} =this.props;
-        const singerDatas = [];
-        let index = 1;
-        for (const key in singerInfos) {
-            const element = singerInfos[key];
-            const align = index % 2 === 0 ? 'right' : 'left'
-            singerDatas.push(<Singer
-                key={index}
-                index={index} 
-                align={align}
-                name={key}
-                songs={element}/>)
-            index += 1;    
-        }
+        const singerDatas = singerInfos.map((singerInfo) => {
+            const {id, name, img, musics} = singerInfo;
+            const align = id % 2 === 0 ? 'right' : 'left';
+            return <Singer key={id}
+                        index={id}
+                        align={align}
+                        name={name}
+                        url={img}
+                        songs={musics}/>;
+        })
         return (
             <div className="singer-infos" style={style}>
                 {singerDatas}

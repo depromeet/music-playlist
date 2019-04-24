@@ -3,6 +3,7 @@ import Axios from 'axios';
 import FestivalHeader from '../organisms/FestivalHeader';
 import FestivalBody from '../organisms/FestivalBody';
 import '../../resources/sass/detail/Festival.scss'
+import { SERVER_URL } from '../../util/util';
 
 class Festival extends Component {
     state = {
@@ -52,7 +53,7 @@ class Festival extends Component {
         }
     }
     componentDidMount() {
-        Axios.get("http://festivalmusic-dev.ap-northeast-2.elasticbeanstalk.com/festivals/1", {
+        Axios.get(SERVER_URL + "/festival/1", {
             mode: "no-cors",
         })
             .then(res => {

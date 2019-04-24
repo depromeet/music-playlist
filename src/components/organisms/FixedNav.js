@@ -22,7 +22,7 @@ class FixedNav extends Component {
     render() {
         const {dates, singerInfos, selectedDate} = this.props;
         const { selectedSinger} = this.state;
-        const singerList = Object.getOwnPropertyNames(singerInfos);
+        const singerList = singerInfos.map((singerInfo) => (singerInfo.name));
 
         if(singerList && !selectedSinger) {
             this.handleChangeForSinger(singerList[0]);
