@@ -28,7 +28,7 @@ class FestivalSelector extends Component{
             return <FestivalName
             upDown={upDown}
             defaultdeg={defaultdeg}
-            festival={festival.name}
+            festival={festival.title_ko}
             festivalLength = {festivalLength}
             index={i}
             key={i}

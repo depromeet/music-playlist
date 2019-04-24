@@ -3,6 +3,7 @@ import axios from 'axios';
 import FestivalName from '../molecules/FestivalName';
 import FestivalSelector from '../molecules/FestivalSelector';
 import '../../resources/sass/Main.scss';
+import { white } from 'ansi-colors';
 
 class Main extends Component {
     constructor(props){
@@ -14,15 +15,19 @@ class Main extends Component {
 
     list(){
         const { festivals } = this.state;
+        const style = {
+            color : white
+        }
        return festivals.map(function(festival, i){
-         return <FestivalName festival={festival.name} curPosition={i} key={i}/>
+         return <li style={style} key={i}> {festival} </li>
        })
     }
 
     componentDidMount(){
         axios.get('http://localhost:3231/festival')
         .then(res => {
-            this.setState({festivals : res.data})
+            console.log(res.data.result);
+            this.setState({festivals : res.data.result})
         })
         .catch( err => {
             console.log(err);
@@ -35,6 +40,7 @@ class Main extends Component {
                 {/* <ul className="main-festival">
                     {this.list()}
                 </ul> */}
+                {/* {this.list()} */}
                 <FestivalSelector festivals={this.state.festivals}/>
             </div>
         );
