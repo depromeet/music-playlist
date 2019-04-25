@@ -10,7 +10,7 @@ class ScrollableSelector extends Component {
         */
        const {amount = 360, list} = props; 
         this.state = {
-            angle: amount / list.length,
+            angle: amount / 10,
             list : list,
             selectedIndex: 0,
         }
@@ -55,48 +55,69 @@ class ScrollableSelector extends Component {
         })
     }
 
-    handleScroll = (e, selectYpixel) => {
-        const upDown = e.deltaY > 0 ? -1 : 1;
+    handleScroll = (e, selectYpixel, z) => {
+        // -1:up 1:down
+        const direction = e.deltaY > 0 ? -1 : 1;
+        const {list} = this.state;
+        if(direction < 0 && this.state.selectedIndex === 0 
+            || direction > 0 && this.state.selectedIndex === (list.length - 1)) {
+                return;
+            }
         const lis = document.querySelector(".scrollable-selector").querySelectorAll("li");
-        lis.forEach((element, index) => {
-            element.classList.remove('selected');
+        for(let i = 0 ; i < lis.length ; i++ ){
+            const element = lis[i]; 
+            
             const re = new RegExp(/(-?\d.*)deg/);
             let deg = parseInt(re.exec(element.style.webkitTransform)[1]);
+            deg += (this.state.angle * direction);
+            
             let y = 0;
-            deg += (this.state.angle * upDown);
-            if (Math.floor(deg % 300) === 0) {
-                this.setSelectedIndex(index);
-                element.classList.add('selected');
+            if (Math.floor(deg % 360) === 0) {
+                this.setSelectedIndex(i);
                 y = selectYpixel;
             }
-
-            element.style.webkitTransform = `rotateX(${deg}deg) translateZ(140px) translateY(${y}px)`;
-        });
+    
+            element.style.webkitTransform = `rotateX(${deg}deg) translateZ(${z}px) translateY(${y}px)`;
+        }
 
     }
-    render(y, z) {
+    render(selectYpixel, z) {
         let deg = 0;
+        let y = 0;
         const { angle, selectedIndex } = this.state;
-        const lis = this.state.list.map((value, index) => {
+        const { list } = this.state; 
+        const lis = [];
+        for(let i = 0 ; i < 10 ; i++ ){
             const style = {
                 webkitTransform: `rotateX(-${deg}deg) translateZ(${z}px)`
             }
             let className;
-            if (index === selectedIndex) {
+            if (i === selectedIndex) {
                 className = 'selected';
+                y = selectYpixel;
+            } else if(i === selectedIndex - 1) {
+                className = 'select-before';
             }
             deg += angle;
-            return (<li style={style}
-                className={className} key={index}>
-                {value}
-            </li>)
-        })
+
+            if( i < list.length) {
+                lis.push(<li style={style}
+                    className={className}>
+                    {list[i]}
+                </li>)
+            } else {
+                lis.push(<li style={style}
+                    className={className + " disable"}>
+                    {}
+                </li>)
+            }
+        }
 
         return (
             <div className="scrollable-selector"
                 onMouseOver={() => {this.disableScroll()}}
                 onMouseLeave={() => {this.enableScroll()}}
-                onWheel={(e) => {this.handleScroll(e, y)}}>
+                onWheel={(e) => {this.handleScroll(e, selectYpixel, z)}}>
                 <ul>
                     {lis}
                 </ul>
