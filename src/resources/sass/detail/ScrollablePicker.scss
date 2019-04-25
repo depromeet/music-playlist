@@ -1,0 +1,49 @@
+.scroll-picker {
+  height: 200px;
+  overflow: hidden;
+  overflow-y: auto;
+  scroll-snap-type: mandatory;
+  scroll-snap-points-y: repeat(300px);
+  scroll-snap-type: y mandatory;
+  position: relative;
+  &:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    content: "";
+    background: linear-gradient(white, rgba(255, 255, 255, 0), white);
+    pointer-events: none;
+  }
+  &::-webkit-scrollbar {
+    width: 1em;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+  }
+}
+// ul {
+//   padding: 0;
+//   margin: 0;
+//   text-align: center;
+//   font-size: 3em;
+//   font-weight: 900;
+//   padding: 0;
+//   &:after {
+//     position: absolute;
+//     bottom: 0;
+//     left: 0;
+//     height: 100%;
+//     width: 100%;
+//     content: "";
+//     background: linear-gradient(white, rgba(255, 255, 255, 0), white);
+//     pointer-events: none;
+//   }
+// }
+// li {
+//   list-style: none;
+//   scroll-snap-align: center;
+// }

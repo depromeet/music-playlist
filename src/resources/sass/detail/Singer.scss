@@ -1,0 +1,73 @@
+%positionRelative {
+    display: inline-block;
+    position: absolute;
+    width: 440px;
+    margin: 0;
+}
+
+.singer-component {
+    height: 611px;
+    position: relative;
+    img {
+        position: absolute;
+        width: 440px;
+        height: 440px;
+        object-fit: cover;
+    }
+    .info {
+        height: 440px;
+        position: relative;
+        padding-top: 45px;
+    }
+    h3 {
+        @extend %positionRelative;
+        margin-bottom: 16px;
+        font-size: 30px;
+    }
+    p {
+        @extend %positionRelative;
+        font-size: 36px;
+        margin-top: 21px;
+    }
+    .singers-div {
+        position: absolute;
+        top: 115px;
+        height: 300px;
+        width: 600px;
+        background: white;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+    }
+    ol {
+        color: black;
+        text-align: left;
+        list-style: none;
+        counter-reset: my-awesome-counter;
+        li {
+            line-height: 1.6;
+            font-size: 20px;
+            counter-increment: my-awesome-counter;
+            &::before {
+                content: counter(my-awesome-counter) ". ";
+                color: #999999;
+              }              
+        }
+    }
+    &.left {
+        .singers-div {
+            left: 380px;
+        }
+    }
+    &.right {
+        img {
+            right: 0;
+        }
+        .singers-div {
+            right: 23.5rem;
+        }
+        p, h3 {
+            right: 0;
+        }
+    }
+}

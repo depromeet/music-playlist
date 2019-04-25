@@ -1,0 +1,48 @@
+@import '../utill/ScrollableSelector.scss';
+
+.scrollable-selector {
+   @extend %scrollable-selector;
+   position: absolute;
+   height: 300px;
+   width: 270px;
+   right: 0;
+   // margin-left: 598px;
+   cursor: pointer;
+   ul {
+      color: rgba(255, 255, 255, 0.15);
+      list-style: none;
+  }
+   li {
+     width: 188px;
+     top: 110px;
+     font-size: 32px;
+
+     &.selected {
+        font-size: 80px;
+     }
+     
+     &.selected + li,
+     &.select-before {
+      font-size: 56px;
+      color: rgba(255, 255, 255, 0.5);
+     }
+
+   }
+   .center {
+      position: absolute;
+      right: 0;
+      width: 270px;
+      height: 80px;
+      background: #ff00003d;
+      top: 100px;
+  }
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+    }
+}
