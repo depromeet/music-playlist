@@ -23,10 +23,10 @@ class Main extends Component {
     // }
 
     componentDidMount(){
-        axios.get('http://festivalmusic-dev.ap-northeast-2.elasticbeanstalk.com/festivals')
+        axios.get('http://festivalmusic-dev.ap-northeast-2.elasticbeanstalk.com/festivals/', {
+        })
         .then(res => {
-            console.log(res.data.result);
-            this.setState({festivals : res.data.result})
+            this.setState({festivals : res.data.results})
         })
         .catch( err => {
             console.log(err);

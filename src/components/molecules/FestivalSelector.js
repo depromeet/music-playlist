@@ -23,12 +23,12 @@ class FestivalSelector extends Component{
         const { upDown } = this.state;
         let defaultdeg = 0;
         let festivalLength = festivals.length;
-        console.log(festivalLength);
         return festivals.map( function(festival, i) {
             defaultdeg = defaultdeg - 36;
             return <FestivalName
             upDown={upDown}
             defaultdeg={defaultdeg}
+            id = {festival.id}
             festival={festival.title_ko}
             festivalLength = {festivalLength}
             index={i}

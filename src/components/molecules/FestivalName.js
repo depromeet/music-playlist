@@ -40,13 +40,14 @@ export default class FestivalName extends Component{
    
     render(){
         const style = {
-            webkitTransform: `rotateX(${this.state.deg}deg) translateZ(140px)`
+            // webkitTransform: `rotateX(${this.state.deg}deg) translateZ(140px)`
+            WebkitTransform: `rotateX(${this.state.deg}deg) translateZ(140px)`
         }
         const { deg } = this.state;
-        const { festival} = this.props;
+        const { festival, id } = this.props;
         return(
                 <li style={style}> 
-                    <a href="1" className={this.makeDegreeStyle(deg)}> {festival} </a>
+                    <a href={'/festivals/'+id} className={this.makeDegreeStyle(deg)}> {festival} </a>
                 </li>
         )
     }
