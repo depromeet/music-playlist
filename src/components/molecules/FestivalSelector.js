@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import throttle from 'lodash.throttle';
 import FestivalName from './FestivalName';
 import '../../resources/sass/detail/FestivalSelector.scss';
+import Brakets from '../atoms/Brakets'
 
 class FestivalSelector extends Component{
     constructor(props){
@@ -53,7 +54,8 @@ class FestivalSelector extends Component{
     // throttledWheel을 위에서 throttle(this.throggledWHeel, 300);
     render(){
         return(
-            <div  onWheel={this.handleWheel}>
+            <div className="scrollable-container" onWheel={this.handleWheel}>
+            <Brakets/>
             <ul className="scrollable-selector">
                 {this.makeList()} 
             </ul>

@@ -1,11 +1,15 @@
 @import '../utill/ScrollableSelector.scss';
 
+.scrollable-container{
+    position: relative;
+}
 .scrollable-selector {
     @extend %scrollable-selector;
     list-style-type: none;
     height: 400px;
     width: 665px;
     margin : auto;
+    padding: 0;
     // ul{
     //     position: relative;
     //     margin: 0;

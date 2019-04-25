@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import FestivalSelector from '../molecules/FestivalSelector';
 import '../../resources/sass/Main.scss';
-import { white } from 'ansi-colors';
 import Background from '../../resources/image/main3.png';
+import Logo from '../atoms/Logo';
+
+//import { ReactComponent as Brakets } from '../../resources/image/brakgets.svg'
+
 
 class Main extends Component {
     constructor(props){
@@ -38,10 +41,12 @@ class Main extends Component {
             backgroundImage: `url(${Background})`
         }
         return (
-            <div
-            style={style}
-            className="main-container">
-                <FestivalSelector festivals={this.state.festivals}/>
+            <div style={style}>   
+                <div className="main-container">
+                    <FestivalSelector festivals={this.state.festivals}/>
+                </div>
+                <Logo/>
+                
             </div>
         );
     }
