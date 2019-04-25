@@ -4,6 +4,7 @@ import FestivalSelector from '../molecules/FestivalSelector';
 import '../../resources/sass/Main.scss';
 import Background from '../../resources/image/main3.png';
 import Logo from '../atoms/Logo';
+import { SERVER_URL } from '../../util/util';
 
 class Main extends Component {
     constructor(props){
@@ -23,7 +24,7 @@ class Main extends Component {
     // }
 
     componentDidMount(){
-        axios.get('http://festivalmusic-dev.ap-northeast-2.elasticbeanstalk.com/festivals/', {
+        axios.get(`${SERVER_URL}/festivals`, {
         })
         .then(res => {
             this.setState({festivals : res.data.results})

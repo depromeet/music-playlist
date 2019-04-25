@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import '../../resources/sass/detail/FestivalSelector.scss';
 
 export default class FestivalName extends Component{
@@ -47,7 +48,7 @@ export default class FestivalName extends Component{
         const { festival, id } = this.props;
         return(
                 <li style={style}> 
-                    <a href={'/festivals/'+id} className={this.makeDegreeStyle(deg)}> {festival} </a>
+                    <Link to={`/festival/${id}`} className={this.makeDegreeStyle(deg)}>{festival}</Link>
                 </li>
         )
     }

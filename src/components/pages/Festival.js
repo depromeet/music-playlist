@@ -11,8 +11,12 @@ class Festival extends Component {
         data: null
     }
     componentWillMount = () => {
-        console.log(SERVER_URL)
-        axios.get(`${SERVER_URL}/festivals/1`)
+        const {params} = this.props.match;
+        if(!params.id) {
+            return;
+        }
+
+        axios.get(`${SERVER_URL}/festivals/${params.id}/`)
         .then(res => {
             const {data} = res;
             this.setState({
