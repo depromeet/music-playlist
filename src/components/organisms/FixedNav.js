@@ -20,7 +20,7 @@ class FixedNav extends Component {
     }
 
     render() {
-        const {dates, singerInfos, selectedDate} = this.props;
+        const {dates, singerInfos, selectedDateId} = this.props;
         const { selectedSinger} = this.state;
         const singerList = singerInfos.map((singerInfo) => (singerInfo.name));
 
@@ -32,7 +32,7 @@ class FixedNav extends Component {
             <nav>
                 <DateSelector dates={dates}
                     handleChange={this.handleParentState} 
-                    selectedDate={selectedDate}/>
+                    selectedDateId={selectedDateId}/>
                 <SingerList singerList={singerList}
                     selectedSinger={selectedSinger}
                     handleChangeForSinger={this.handleChangeForSinger}/>

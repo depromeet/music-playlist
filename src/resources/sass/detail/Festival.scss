@@ -3,6 +3,7 @@
 .festival-component {
     padding: 222px 96px 0 96px;
     background: url('../../image/Img_1\(Main\).png') no-repeat;
+    background-position: 0 -4px;
     min-width: 1440px;
     height: 100vh;
     overflow-y: auto;
@@ -11,13 +12,20 @@
     .go-main {
         display: inline-block;
         position: absolute;
-        color: white;
-        font-size: 65px;
         font-weight: 100;
-        opacity: 0.5;
-        top: 71px;
-        right: 70px;
+        top: -135px;
+        right: -20px;
         transform: scale(1.25,1);
-        cursor: pointer;
+        a {
+            text-decoration: blink;
+            color: white;
+            opacity: 0.5;
+            font-size: 65px;
+            cursor: pointer;
+            transform: opacity 2s;
+            &:hover {
+                opacity: 1;
+            }
+        }
     }
 }

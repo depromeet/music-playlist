@@ -4,11 +4,11 @@ import SingerInfos from './SingerInfos';
 
 class FestivalBody extends Component {
     state = {
-        selectedDate:this.props.data.festival_days[0].perform_date,    
+        selectedDateId:this.props.data? 0 : null,    
     }
-    handleChange = (date) => {
+    handleChange = (selectedDateId) => {
         this.setState({
-            selectedDate: date,
+            selectedDateId,
         })
     }
     render() {
@@ -17,18 +17,24 @@ class FestivalBody extends Component {
             marginTop: '200px',
             color: 'white',
         }
-        const {data} = this.props;
-        console.log(data);
-        const {selectedDate} = this.state;
+        const { data } = this.props;
+        if (!data) {
+            return (
+                <React.Fragment>
+                    <div style={stlyeBody}>정보가 없습니다.</div>
+                </React.Fragment>
+            )
+        }
+        const { selectedDateId } = this.state;
         const dates = data.festival_days.map((day) => ( day.perform_date))
-        const singerInfos = data.festival_days.find((d)=> (d.perform_date === selectedDate)).singers;
+        const singerInfos = data.festival_days[selectedDateId].singers;
 
         return (
             <React.Fragment>
                 <div style={stlyeBody}>
                     <FixedNav dates={dates}
                         singerInfos={singerInfos}
-                        selectedDate={selectedDate}
+                        selectedDateId={selectedDateId}
                         handleChange={this.handleChange}/>
                     <SingerInfos singerInfos={singerInfos}/>
                 </div>

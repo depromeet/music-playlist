@@ -4,10 +4,6 @@ const keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
 class ScrollableSelector extends Component {
     constructor(props) {
         super(props);
-        /* 
-        amount: 원통 각도
-        !!list 길이 웬만하면 원통각도의 약수로
-        */
        const {amount = 360, list} = props; 
         this.state = {
             angle: amount / 10,
@@ -50,17 +46,16 @@ class ScrollableSelector extends Component {
         document.onkeydown = null;
     }
     setSelectedIndex = (index) => {
-        this.setState({
-            selectedIndex: index,
-        })
+        this.props.handleYearChange(index)
     }
 
     handleScroll = (e, selectYpixel, z) => {
         // -1:up 1:down
         const direction = e.deltaY > 0 ? -1 : 1;
         const {list} = this.state;
-        if(direction < 0 && this.state.selectedIndex === 0 
-            || direction > 0 && this.state.selectedIndex === (list.length - 1)) {
+        const {selectedYearIndex} = this.props;
+        if(direction < 0 && selectedYearIndex === 0 
+            || direction > 0 && selectedYearIndex === (list.length - 1)) {
                 return;
             }
         const lis = document.querySelector(".scrollable-selector").querySelectorAll("li");
@@ -84,32 +79,33 @@ class ScrollableSelector extends Component {
     render(selectYpixel, z) {
         let deg = 0;
         let y = 0;
-        const { angle, selectedIndex } = this.state;
-        const { list } = this.state; 
+        const { angle, list } = this.state;
+        const {selectedYearIndex} = this.props;
         const lis = [];
         for(let i = 0 ; i < 10 ; i++ ){
             const style = {
-                webkitTransform: `rotateX(-${deg}deg) translateZ(${z}px)`
+                WebkitTransform: `rotateX(-${deg}deg) translateZ(${z}px)`
             }
             let className;
-            if (i === selectedIndex) {
+            if (i === selectedYearIndex) {
                 className = 'selected';
                 y = selectYpixel;
-            } else if(i === selectedIndex - 1) {
+            } else if(i === selectedYearIndex - 1) {
                 className = 'select-before';
             }
             deg += angle;
 
             if( i < list.length) {
                 lis.push(<li style={style}
+                    data-key={i}
+                    key={i}
                     className={className}>
                     {list[i]}
                 </li>)
             } else {
                 lis.push(<li style={style}
-                    className={className + " disable"}>
-                    {}
-                </li>)
+                    key={i}
+                    className={className}/>)
             }
         }
 

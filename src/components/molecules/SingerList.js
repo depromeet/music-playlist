@@ -27,7 +27,10 @@ class SingerList extends Component {
                 className = 'selected';
             }
             return (
-                <li className={className} onClick={this.handleClick} data-index={index + 1}> 
+                <li className={className}
+                    onClick={this.handleClick}
+                    key={index}
+                    data-index={index + 1}> 
                     {singer}
                 </li>
             )

@@ -11,21 +11,21 @@ class DateSelector extends Component {
         }
         target.classList.add('selected');
         document.querySelector('.singer-ul').style.display = 'none';
-        this.props.handleChange(target.innerText);
+        this.props.handleChange(target.dataset.key);
     }
     dateFormat(date) {
         const dateObj = new Date(date);
         return `${pad0(dateObj.getMonth(), 2)}/${pad0(dateObj.getDate(), 2)}`;
     }
     render() {
-        const {dates, selectedDate} = this.props;
-        console.log(dates);
+        const {dates, selectedDateId} = this.props;
         const a = dates.map((date, index) => {
             let className;
-            if(selectedDate === date) {
+            if(selectedDateId === index) {
                 className = 'selected'
             }
-            return (<a key={index} data-key={index}
+            return (<a key={index} 
+                data-key={index}
                 onClick={this.handleClick}
                 className={className}>
                 {this.dateFormat(date)}
