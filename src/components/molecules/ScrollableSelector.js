@@ -10,7 +10,7 @@ class ScrollableSelector extends Component {
         */
        const {amount = 360, list} = props; 
         this.state = {
-            angle: amount / list.length,
+            angle: amount / 10,
             list : list,
             selectedIndex: 0,
         }
@@ -57,12 +57,13 @@ class ScrollableSelector extends Component {
 
     handleScroll = (e, selectYpixel, z) => {
         // -1:up 1:down
-        const lis = document.querySelector(".scrollable-selector").querySelectorAll("li");
         const direction = e.deltaY > 0 ? -1 : 1;
+        const {list} = this.state;
         if(direction < 0 && this.state.selectedIndex === 0 
-            || direction > 0 && this.state.selectedIndex === (lis.length - 1)) {
-            return;
-        }
+            || direction > 0 && this.state.selectedIndex === (list.length - 1)) {
+                return;
+            }
+        const lis = document.querySelector(".scrollable-selector").querySelectorAll("li");
         for(let i = 0 ; i < lis.length ; i++ ){
             const element = lis[i]; 
             
@@ -86,7 +87,7 @@ class ScrollableSelector extends Component {
         const { angle, selectedIndex } = this.state;
         const { list } = this.state; 
         const lis = [];
-        for(let i = 0 ; i < list.length ; i++ ){
+        for(let i = 0 ; i < 10 ; i++ ){
             const style = {
                 webkitTransform: `rotateX(-${deg}deg) translateZ(${z}px)`
             }
@@ -98,10 +99,17 @@ class ScrollableSelector extends Component {
                 className = 'select-before';
             }
             deg += angle;
-            lis.push(<li style={style}
-                className={className}>
-                {list[i]}
-            </li>)
+            if( i < list.length) {
+                lis.push(<li style={style}
+                    className={className}>
+                    {list[i]}
+                </li>)
+            } else {
+                lis.push(<li style={style}
+                    className={className + " disable"}>
+                    {}
+                </li>)
+            }
         }
 
         return (
