@@ -5,9 +5,6 @@ import '../../resources/sass/Main.scss';
 import Background from '../../resources/image/main3.png';
 import Logo from '../atoms/Logo';
 
-//import { ReactComponent as Brakets } from '../../resources/image/brakgets.svg'
-
-
 class Main extends Component {
     constructor(props){
         super(props);
@@ -26,7 +23,7 @@ class Main extends Component {
     // }
 
     componentDidMount(){
-        axios.get('http://localhost:3231/festival')
+        axios.get('http://festivalmusic-dev.ap-northeast-2.elasticbeanstalk.com/festivals')
         .then(res => {
             console.log(res.data.result);
             this.setState({festivals : res.data.result})
@@ -46,7 +43,6 @@ class Main extends Component {
                     <FestivalSelector festivals={this.state.festivals}/>
                 </div>
                 <Logo/>
-                
             </div>
         );
     }

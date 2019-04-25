@@ -22,14 +22,9 @@ export default class FestivalName extends Component{
             deg : state.deg + (36*props.upDown)
         }
     }
-   
-    render(){
+
+    makeDegreeStyle(deg){
         let className ;
-        const style = {
-            webkitTransform: `rotateX(${this.state.deg}deg) translateZ(140px)`
-        }
-        const { deg } = this.state;
-        const { festival} = this.props;
         if(deg === 0){
             className = "selected";
         }else if(Math.abs(deg) === 36){
@@ -38,12 +33,20 @@ export default class FestivalName extends Component{
             className = "festival-72deg"
         }
         else{
-            console.log(Math.abs(deg));
             className= "";
         }
+        return className
+    }
+   
+    render(){
+        const style = {
+            webkitTransform: `rotateX(${this.state.deg}deg) translateZ(140px)`
+        }
+        const { deg } = this.state;
+        const { festival} = this.props;
         return(
                 <li style={style}> 
-                    <a href="1" className={className}> {festival} </a>
+                    <a href="1" className={this.makeDegreeStyle(deg)}> {festival} </a>
                 </li>
         )
     }
