@@ -28,6 +28,14 @@
      }
 
    }
+   .center {
+      position: absolute;
+      right: 0;
+      width: 270px;
+      height: 80px;
+      background: #ff00003d;
+      top: 100px;
+  }
 }
 
 @keyframes fadeInOpacity {

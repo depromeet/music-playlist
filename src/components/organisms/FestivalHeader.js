@@ -4,14 +4,14 @@ import YearSelector from '../molecules/YearSelector';
 
 class FestivalHeader extends Component {
     render() {
-        const {title} = this.props;
+        const {title, years} = this.props;
         const style = {
             position: 'relative'
         }
         return (
             <div style={style}>
-                <FestivalTitle title={title}/>
-                <YearSelector/>
+                <FestivalTitle title={title.toUpperCase()}/>
+                <YearSelector years = {years}/>
             </div>
         );
     }

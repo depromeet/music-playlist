@@ -19,12 +19,15 @@ class DateSelector extends Component {
     }
     render() {
         const {dates, selectedDate} = this.props;
+        console.log(dates);
         const a = dates.map((date, index) => {
             let className;
             if(selectedDate === date) {
                 className = 'selected'
             }
-            return (<a key={index} onClick={this.handleClick} className={className}>
+            return (<a key={index} data-key={index}
+                onClick={this.handleClick}
+                className={className}>
                 {this.dateFormat(date)}
             </a>)
         });
