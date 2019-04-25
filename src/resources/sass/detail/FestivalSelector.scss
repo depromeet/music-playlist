@@ -31,6 +31,14 @@
     a:link{
         text-decoration: none;
         color : rgba(255, 255, 255, 0.5);
+        transition: transform 0.5s, font-size 1s, color 1s;
+        &.festival-36deg{
+            font-size : 60px
+        }
+        &.festival-72deg{
+            color : rgba(255, 255, 255, 0.247);
+            font-size : 55px
+        }
         &.selected {
             color: #fff;
         }

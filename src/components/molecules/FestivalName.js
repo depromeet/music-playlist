@@ -32,7 +32,13 @@ export default class FestivalName extends Component{
         const { festival} = this.props;
         if(deg === 0){
             className = "selected";
-        }else{
+        }else if(Math.abs(deg) === 36){
+            className = "festival-36deg"
+        }else if(Math.abs(deg) === 72){
+            className = "festival-72deg"
+        }
+        else{
+            console.log(Math.abs(deg));
             className= "";
         }
         return(
