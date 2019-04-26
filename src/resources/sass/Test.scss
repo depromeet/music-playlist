@@ -1,5 +1,63 @@
 @import "./Util.scss";
+@import url("https://fonts.googleapis.com/css?family=Amatic+SC:400,700");
+body {
+//   font-family: 'Amatic SC', sans-serif;
+  font-size: 100px;
+}
+.test {
+      animation: squiggly-anim 0.34s linear infinite;
+}
 
-h1.test {
-    font-family: BlackHanSans;   
+.test {
+  display: inline-block;
+  max-width: 925px;
+  opacity: 0.7;
+  margin: 0;
+  -webkit-text-stroke: 1px #ffffff;
+  font-size: 130px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: left;
+  color: rgba(255, 255, 255, 0);
+}
+.small {
+  font-size: 0.5em;
+}
+.smaller {
+  font-size: 0.4em;
+}
+p {
+  margin: 0;
+}
+
+@keyframes squiggly-anim {
+  @for $i from -1 to 3 {
+    // $id: #squiggly-
+    #{$i + 25} {
+      filter: url("#squiggly-");
+    } 
+  }
+  0% {
+    -webkit-filter: url("#squiggly-0");
+            filter: url("#squiggly-0");
+  }
+  25% {
+    -webkit-filter: url("#squiggly-1");
+            filter: url("#squiggly-1");
+  }
+  50% {
+    -webkit-filter: url("#squiggly-2");
+            filter: url("#squiggly-2");
+  }
+  75% {
+    -webkit-filter: url("#squiggly-3");
+            filter: url("#squiggly-3");
+  }
+  100% {
+    -webkit-filter: url("#squiggly-4");
+            filter: url("#squiggly-4");
+  }
 }

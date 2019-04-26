@@ -5,7 +5,7 @@ class YearSelector extends ScrollableSelector {
     constructor(props) {
         super({
             amount:300,
-            list: props.years,
+            list: props.years.reverse(),
             handleYearChange: props.handleYearChange,
             selectedYearIndex: props.selectedYearIndex
         })

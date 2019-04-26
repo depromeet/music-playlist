@@ -18,7 +18,8 @@ class FestivalBody extends Component {
             color: 'white',
         }
         const { data } = this.props;
-        if (!data) {
+        if (!data ||
+             (data && data.festival_days.length === 0)) {
             return (
                 <React.Fragment>
                     <div style={stlyeBody}>정보가 없습니다.</div>
