@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
-import '../../resources/sass/detail/FixedNav.scss';
 import DateSelector from '../molecules/DateSelector';
 import SingerList from '../molecules/SingerList';
+import '../../resources/sass/detail/FixedNav.scss';
 
 class FixedNav extends Component {
-    state = {
-        selectedSinger: null,
-    }
-
-    handleChangeForSinger = (singer) => {
-        this.setState({
-            selectedSinger: singer
-        })
+    handleChangeForSinger = (index) => {
+        this.props.handleChangeSinger(index);
     }
 
     handleParentState = (data) => {
@@ -20,21 +14,17 @@ class FixedNav extends Component {
     }
 
     render() {
-        const {dates, singerInfos, selectedDateId} = this.props;
-        const { selectedSinger} = this.state;
-        const singerList = singerInfos.map((singerInfo) => (singerInfo.name));
-
-        if(singerList && !selectedSinger) {
-            this.handleChangeForSinger(singerList[0]);
+        const {dates, singerInfos, selectedDateId, selectedSingerIndex} = this.props;
+        if(singerInfos.length > 0 && selectedSingerIndex === null) {
+            this.handleChangeForSinger(0);
         }
-
         return (
             <nav>
                 <DateSelector dates={dates}
                     handleChange={this.handleParentState} 
                     selectedDateId={selectedDateId}/>
-                <SingerList singerList={singerList}
-                    selectedSinger={selectedSinger}
+                <SingerList singerInfos={singerInfos}
+                    selectedSingerIndex={selectedSingerIndex}
                     handleChangeForSinger={this.handleChangeForSinger}/>
             </nav>
         );

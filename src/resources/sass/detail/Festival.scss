@@ -2,12 +2,29 @@
 
 .festival-component {
     padding: 222px 96px 0 96px;
-    background: url('../../image/Img_1\(Main\).png') no-repeat;
+    // background: url('../../image/sub_main_1.png') no-repeat;
     background-position: 0 -4px;
     min-width: 1440px;
     height: 100vh;
     overflow-y: auto;
     box-sizing: border-box;
+
+    &.fid-1{
+        background: url('../../image/sub_main_1.png') no-repeat;
+    }
+
+    &.fid-2{
+        background: url('../../image/sub_main_2.png') no-repeat;
+    }
+
+    &.fid-3{
+        background: url('../../image/sub_main_3.png') no-repeat;
+    }
+    &::-webkit-scrollbar
+    {
+        width: 0;
+    }
+    
 
     .go-main {
         display: inline-block;
@@ -27,5 +44,10 @@
                 opacity: 1;
             }
         }
+    }
+    .festival-body {
+        display: flex;
+        margin-top: 200px;
+        color: white;
     }
 }

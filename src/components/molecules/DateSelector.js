@@ -4,14 +4,8 @@ import { pad0 } from '../../util/util';
 class DateSelector extends Component {
     handleClick = (e) => {
         const target = e.target;
-        const selectedNode = target.parentNode.querySelector('.selected');
-        if(selectedNode) {
-            selectedNode.classList.remove('selected');
-        
-        }
-        target.classList.add('selected');
         document.querySelector('.singer-ul').style.display = 'none';
-        this.props.handleChange(target.dataset.key);
+        this.props.handleChange(parseInt(target.dataset.key));
     }
     dateFormat(date) {
         const dateObj = new Date(date);
@@ -19,15 +13,21 @@ class DateSelector extends Component {
     }
     render() {
         const {dates, selectedDateId} = this.props;
+
         const a = dates.map((date, index) => {
-            let className;
+            let style;
             if(selectedDateId === index) {
-                className = 'selected'
+                style={
+                    color:'white',
+                    borderBottom: '10px solid #ffffff',
+                    animation: 'content 1s ease-in',
+                    animationIterationCount: '1',
+                }
             }
             return (<a key={index} 
                 data-key={index}
                 onClick={this.handleClick}
-                className={className}>
+                style={style}>
                 {this.dateFormat(date)}
             </a>)
         });

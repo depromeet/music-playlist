@@ -18,18 +18,13 @@ nav {
         text-decoration: none;
         cursor: pointer;
         border-bottom: 10px solid rgba(255, 255, 255, 0.2);
-        &.selected {
-            color: #ffffff;
-            animation: content 1s ease-in;
-            animation-iteration-count: 1;
-            border-bottom: 10px solid #ffffff;
-        }
+        
     }
     .singet-list {
         margin-top: 56px;
     }
     .singer-ul {
-        display: none;
+        // display: none;
         padding-left: 0;
         margin-top: 56px; 
         color: #999999;

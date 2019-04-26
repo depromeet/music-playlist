@@ -3,35 +3,31 @@ import React, { Component } from 'react';
 class SingerList extends Component {
     handleClick = (e) => {
         const target = e.target;
-        const { index } = target.dataset;
-        const selectedNode = target.parentNode.querySelector('.selected');
-        if(selectedNode) {
-            selectedNode.classList.remove('selected');
-        
-        }
-        target.classList.add('selected');
-        this.props.handleChangeForSinger(target.innerText);
-        document.getElementById(`div_${index}`).scrollIntoView({ block: 'end',  behavior: 'smooth' });
+        const { id, index } = target.dataset;
+        this.props.handleChangeForSinger(parseInt(index));
+        document.getElementById(`div_${id}`).scrollIntoView({ block: 'end',  behavior: 'smooth' });
     }
+
     componentDidUpdate() {
         document.querySelector('.singer-ul').style.display = 'block';
     }
     render() {
-        const {singerList, selectedSinger} = this.props;
-        if(!selectedSinger) {
-
-        }
-        const lis = singerList.map((singer, index) => {
-            let className;
-            if(singer === selectedSinger) {
-                className = 'selected';
+        const {singerInfos, selectedSingerIndex} = this.props;
+        const lis = singerInfos.map((info, index) => {
+            let style;
+            if(selectedSingerIndex === index) {
+                style={
+                    color:'white',
+                    textDecoration: 'underline',
+                }
             }
             return (
-                <li className={className}
-                    onClick={this.handleClick}
+                <li onClick={this.handleClick}
                     key={index}
-                    data-index={index + 1}> 
-                    {singer}
+                    style={style}
+                    data-index={index}
+                    data-id={info.id}> 
+                    {info.name}
                 </li>
             )
         });
