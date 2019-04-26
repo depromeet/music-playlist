@@ -37,6 +37,22 @@
          background: #ff00003d;
          top: 100px;
      }
+     
+     .scroll-body {
+         float: right;
+         height: 100%;
+         width: 6px;
+      }
+      .scroll-bar {
+         position: absolute;
+         top: 0%;
+         width: 6px;
+         height: 10%;
+         opacity: 0.7;
+         border-radius: 3px;
+         background-color: #ffffff;
+         transition: top 0.5s;
+     }
    }
 }
 

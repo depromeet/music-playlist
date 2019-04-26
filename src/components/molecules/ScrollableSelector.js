@@ -75,6 +75,11 @@ class ScrollableSelector extends Component {
             element.style.webkitTransform = `rotateX(${deg}deg) translateZ(${z}px) translateY(${y}px)`;
         }
 
+        const scrollBar = document.querySelector(".scroll-bar");
+        const styleTop = scrollBar.style.top ? parseInt(scrollBar.style.top) : 0;
+        const newPositionX = styleTop + (100 /list.length) * direction; 
+        scrollBar.style.top = `${newPositionX}%`
+
     }
     render(selectYpixel, z) {
         let deg = 0;
@@ -109,6 +114,9 @@ class ScrollableSelector extends Component {
             }
         }
 
+        const scrollHeight = {
+            height: `${100 /list.length}%`
+        }
         return (
             <div className="scrollable-selector"
                 onMouseOver={() => {this.disableScroll()}}
@@ -117,6 +125,9 @@ class ScrollableSelector extends Component {
                 <ul>
                     {lis}
                 </ul>
+                <div className="scroll-body">
+                    <div style={scrollHeight} className="scroll-bar"/>
+                </div>
             </div>
         );
     }

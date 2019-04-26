@@ -20,8 +20,8 @@ class DateSelector extends Component {
                 style={
                     color:'white',
                     borderBottom: '10px solid #ffffff',
-                    animation: 'content 1s ease-in',
-                    animationIterationCount: '1',
+                    // animation: 'content 1s ease-in',
+                    // animationIterationCount: '1',
                 }
             }
             return (<a key={index} 

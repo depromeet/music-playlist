@@ -16,8 +16,9 @@ nav {
         line-height: 1.46;
         letter-spacing: normal;
         text-decoration: none;
-        cursor: pointer;
         border-bottom: 10px solid rgba(255, 255, 255, 0.2);
+        cursor: pointer;
+        transition: color 1s, border-color 1s;
         
     }
     .singet-list {
@@ -38,11 +39,9 @@ nav {
         li {
             font-size: 22px;
             line-height: 36px;
+            transition: color 1s;
             cursor: pointer;
-            &.selected {
-                color: #ffffff;
-                text-decoration: underline;
-            }
+
         }
     }
 }
