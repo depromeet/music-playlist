@@ -9,7 +9,7 @@ class DateSelector extends Component {
     }
     dateFormat(date) {
         const dateObj = new Date(date);
-        return `${pad0(dateObj.getMonth(), 2)}/${pad0(dateObj.getDate(), 2)}`;
+        return `${pad0(dateObj.getMonth() + 1, 2)}/${pad0(dateObj.getDate(), 2)}`;
     }
     render() {
         const {dates, selectedDateId} = this.props;
